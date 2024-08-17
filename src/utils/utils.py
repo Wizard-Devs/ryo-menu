@@ -1,22 +1,22 @@
 import json
 import os
 
-type User = dict[str, str | int]
 
-class Utils():
-    def load_json(self, file: str):
+class Utils:
+    @staticmethod
+    def load_json(file: str):
         with open(file, "r") as f:
             return json.load(f)
 
-
-    def save_json(self, file: str, user: User) -> None:
+    @staticmethod
+    def save_json(file: str, data: object) -> None:
         with open(file, "w") as f:
-            json.dump(user, f, indent=4)
-            
+            json.dump(data, f, indent=4)
 
-    def clear_screen(self) -> None:
+    @staticmethod
+    def clear_screen() -> int:
         # windows
         if os.name == "nt":
             return os.system("cls")
 
-        return os.system("clear") # mac, linux
+        return os.system("clear")  # mac, linux
